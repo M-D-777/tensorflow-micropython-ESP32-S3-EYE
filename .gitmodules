@@ -1,7 +1,3 @@
-[submodule "micropython"]
-	path = micropython
-	url = https://github.com/micropython/micropython.git
-	branch = master
 [submodule "tensorflow"]
 	path = tensorflow
 	url = https://github.com/mocleiri/tflite-micro.git
@@ -14,3 +10,6 @@
 	path = tflm_esp_kernels
 	url = https://github.com/espressif/tflite-micro-esp-examples.git
 	branch = master
+[submodule "micropython"]
+	path = micropython
+	url = https://github.com/M-D-777/micropython.git
