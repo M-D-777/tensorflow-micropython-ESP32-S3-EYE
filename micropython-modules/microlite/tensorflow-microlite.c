@@ -210,12 +210,22 @@ STATIC const mp_rom_map_elem_t tensor_locals_dict_table[] = {
 
 STATIC MP_DEFINE_CONST_DICT(tensor_locals_dict, tensor_locals_dict_table);
 
+#if defined(MP_DEFINE_CONST_OBJ_TYPE)
+MP_DEFINE_CONST_OBJ_TYPE(
+    microlite_tensor_type,
+    MP_QSTR_tensor,
+    MP_TYPE_FLAG_NONE,
+    print, tensor_print,
+    locals_dict, &tensor_locals_dict
+);
+#else
 const mp_obj_type_t microlite_tensor_type = {
     { &mp_type_type },
     .name = MP_QSTR_tensor,
     .print = tensor_print,
     .locals_dict = (mp_obj_dict_t*)&tensor_locals_dict,
 };
+#endif
 
 // audio_frontend
 
@@ -259,6 +269,16 @@ STATIC const mp_rom_map_elem_t audio_frontend_locals_dict_table[] = {
 
 STATIC MP_DEFINE_CONST_DICT(audio_frontend_locals_dict, audio_frontend_locals_dict_table);
 
+#if defined(MP_DEFINE_CONST_OBJ_TYPE)
+MP_DEFINE_CONST_OBJ_TYPE(
+    microlite_audio_frontend_type,
+    MP_QSTR_audio_frontend,
+    MP_TYPE_FLAG_NONE,
+    make_new, af_make_new,
+    print, af_print,
+    locals_dict, &audio_frontend_locals_dict
+);
+#else
 const mp_obj_type_t microlite_audio_frontend_type = {
     { &mp_type_type },
     .name = MP_QSTR_audio_frontend,
@@ -266,6 +286,7 @@ const mp_obj_type_t microlite_audio_frontend_type = {
     .print = af_print,
     .locals_dict = (mp_obj_dict_t*)&audio_frontend_locals_dict,
 };
+#endif
 
 // - microlite interpreter
 
@@ -409,6 +430,16 @@ STATIC const mp_rom_map_elem_t interpreter_locals_dict_table[] = {
 
 STATIC MP_DEFINE_CONST_DICT(interpreter_locals_dict, interpreter_locals_dict_table);
 
+#if defined(MP_DEFINE_CONST_OBJ_TYPE)
+MP_DEFINE_CONST_OBJ_TYPE(
+    microlite_interpreter_type,
+    MP_QSTR_interpreter,
+    MP_TYPE_FLAG_NONE,
+    make_new, interpreter_make_new,
+    print, interpreter_print,
+    locals_dict, &interpreter_locals_dict
+);
+#else
 const mp_obj_type_t microlite_interpreter_type = {
     { &mp_type_type },
     .name = MP_QSTR_interpreter,
@@ -416,7 +447,7 @@ const mp_obj_type_t microlite_interpreter_type = {
     .make_new = interpreter_make_new,
     .locals_dict = (mp_obj_dict_t*)&interpreter_locals_dict,
 };
-
+#endif
 
 // main microlite module
 
